@@ -1,0 +1,15 @@
+<!doctype html>
+<head>
+  <title>Cross Storage Hub</title>
+</head>
+<body>
+  <script type="text/javascript" src="../lib/hub.js"></script>
+  <script>
+    // Limit requests to any client running on .localhost:300x
+    CrossStorageHub.init([
+      //{origin: /.*localhost:[/d+]$/, allow: ['get', 'set', 'del','getKeys', 'clear']}
+	  {origin: /.*$/, allow: ['get', 'set', 'del','getKeys', 'clear']}
+    ]);
+  </script>
+</body>
+</html>
