@@ -22,7 +22,7 @@
 import { stars } from '../assets/js/stars'
 import * as axios from '../assets/js/myAxios' 
 import {addCookie,delCookie,getCookie} from '../assets/js/cookie' 
-// import {addStorage,delStorage} from '../assets/js/storage' 
+   import {addStorage,delStorage} from '../assets/js/storage' 
 import CrossStorage from 'cross-storage'
 export default {
   name: 'HelloWorld',
@@ -54,26 +54,11 @@ export default {
       let that=this;
       // axios.ajaxPost('/login',this.loginForm,function (res) {
       //   console.log(res)
-        // that.$router.replace('/main');
         let token="123";
         addCookie('token', token);
-        var storage = new CrossStorage.CrossStorageClient('http://localhost:7000/crossstorage/example/hub.html');
-        storage.onConnect().then(function() {
-          return storage.set("token", token);
-        }).catch(function(err) {
-          console.log(err)
-        }).then(function() {
-          storage.close();
-        });
-        storage.onConnect()
-          .then(function() {
-            console.log(storage.get("token"));
-            return storage.get('token');
-          }).then(function(res) {
-            callback(res);
-          })['catch'](function(err) {
-             console.log(err)
-        });
+        addStorage('token', token);
+        window.location.reload();
+        that.$router.replace('/main');
       // });
     },
     keyup(ev){
