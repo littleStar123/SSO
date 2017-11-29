@@ -2,7 +2,6 @@ import CrossStorage from 'cross-storage'
 import { Message } from 'element-ui'
 
 var storage = new CrossStorage.CrossStorageClient('http://localhost:7000/crossstorage/example/hub.html');
-console.log(storage)
 /**添加Storage**/
 export const addStorage = function(name, value) {
 	storage.onConnect().then(function() {

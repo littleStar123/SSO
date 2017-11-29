@@ -1,12 +1,9 @@
 import axios from 'axios'
 import Qs from 'qs'
 import { Message } from 'element-ui'
-const prePath="http://localhost:8081/shop"
 const showLogs=1;
-// axios.defaults.baseURL = '/api'
- axios.defaults.baseURL = 'http://127.0.0.1:8081/'
+ axios.defaults.baseURL = 'http://localhost:1200/'
 export const ajaxPost = function(url, params, callback, err) {
-	console.log("post")
 	axios({
 		method: 'post',
 		url: url,
@@ -107,8 +104,6 @@ axios.defaults.timeout = 15000;
 axios.interceptors.request.use(function(config) {
 	//判断是不是登录接口，如果是登录接口 不需要token 继续请求；如果不是，阻止请求
 	if(config.url.indexOf('login') > -1) {
-		// config.url=prePath+config.url;
-		//continue
 	} else {
 		if(getCookie('access_token')) { // 判断是否存在token，如果存在的话，则每个http header都加上token
 			config.headers.Authorization = getCookie('access_token');

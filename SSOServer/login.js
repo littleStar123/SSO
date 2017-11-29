@@ -1,9 +1,9 @@
-login.js
-var mysql=require("mysql");
+
+//var mysql=require("mysql");
 var express = require('express');
 var app = express();
 var fs = require("fs");
-var sql = require('./sql.js')
+//var sql = require('./sql.js')
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser'); 
@@ -32,7 +32,7 @@ app.post('/login', urlencodedParser, function (req, res) {
    var user=req.body.username;
    var pwd=req.body.password;
    if(user=='admin'){
-    var senddata={code: 200, msg: 'done'};
+    var senddata={code: 200, msg: 'done',token:'i am token'};
     res.end(JSON.stringify(senddata));
   }
 })
@@ -44,7 +44,7 @@ app.get('/login', function (req, res) {
 })
 
 
-var server = app.listen(1111, function() {
+var server = app.listen(1200, function() {
 	var host = server.address().address
 	var port = server.address().port
 	console.log("应用实例，访问地址为 http://%s:%s", host, port)
