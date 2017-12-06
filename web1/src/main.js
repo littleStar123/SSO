@@ -8,7 +8,6 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import './assets/common.css'
 import 'element-ui/lib/theme-default/index.css'
-import { getCookie,delCookie } from './assets/js/cookie.js'
 
 Vue.config.productionTip = false;
 

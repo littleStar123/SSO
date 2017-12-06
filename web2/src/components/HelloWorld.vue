@@ -52,14 +52,14 @@ export default {
     },
     loginSubmit(){
       let that=this;
-      // axios.ajaxPost('/login',this.loginForm,function (res) {
-      //   console.log(res)
-        let token="123";
+      axios.ajaxPost('/login',this.loginForm,function (res) {
+        let token=res.token;
         addCookie('token', token);
         addStorage('token', token);
-        window.location.reload();
+        sessionStorage.setItem('token', token);
         that.$router.replace('/main');
-      // });
+        window.reload();
+      });
     },
     keyup(ev){
       this.loginSubmit();

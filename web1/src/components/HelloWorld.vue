@@ -58,6 +58,7 @@ export default {
         addStorage('token', token);
         sessionStorage.setItem('token', token);
         that.$router.replace('/main');
+        window.reload();
       });
     },
     keyup(ev){
