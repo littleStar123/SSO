@@ -61,7 +61,6 @@ export default {
   },
   mounted(){
     this.stars();
-    // document.getElementById("background").style.height=window.innerHeight+"px";
   }
 }
 </script>
