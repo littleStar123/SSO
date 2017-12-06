@@ -21,6 +21,9 @@
 <script>
 import { stars } from '../assets/js/stars'
 import * as axios from '../assets/js/myAxios' 
+import {addCookie,delCookie,getCookie} from '../assets/js/cookie' 
+   import {addStorage,delStorage} from '../assets/js/storage' 
+import CrossStorage from 'cross-storage'
 export default {
   name: 'HelloWorld',
   data () {
@@ -51,7 +54,10 @@ export default {
       let that=this;
       // axios.ajaxPost('/login',this.loginForm,function (res) {
       //   console.log(res)
-        console.log(that.$router)
+        let token="123";
+        addCookie('token', token);
+        addStorage('token', token);
+        window.location.reload();
         that.$router.replace('/main');
       // });
     },

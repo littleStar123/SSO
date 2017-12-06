@@ -8,6 +8,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import './assets/common.css'
 import 'element-ui/lib/theme-default/index.css'
+import { getCookie,delCookie } from './assets/js/cookie.js'
 
 Vue.config.productionTip = false;
 
@@ -21,6 +22,21 @@ router.beforeEach((to, from, next) => {
 		if(sessionStorage.getItem("token")){
 			Message.error("登录信息过期请重登录")
 		}
+		next({
+			path: '/login'
+		})
+	} else if(to.path == '/') {
+		next({
+			path: '/main'
+		})
+	}else{
+		next()
+	}
+})
+
+router.beforeEach((to, from, next) => {
+	let token = getCookie('token');
+	if(!token && to.path !== '/login') {
 		next({
 			path: '/login'
 		})
